@@ -52,9 +52,8 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 		return (ft_putstr_fd("Use: ./so_long <map.ber>\n", 2), 1);
-	if (ft_strlen(argv[1]) <= 4 || ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4],
-		".ber", 4))
-		return (ft_putstr_fd("Incorrect Name\n", 2), 1);
+	if (file_check(argv[1]) == 1)
+		return (1);
 	data = *((t_mapa *)memset(&data, 0, sizeof(t_mapa)));
 	data.mlx = mlx_init();
 	data.text = argv[1];

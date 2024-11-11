@@ -60,6 +60,7 @@ int	call_function(t_mapa *data, char **argv)
 {
 	reset_data(data, argv[1]);
 	check_general(data);
+	ft_window_size(data, data->mlx);
 	load_images(data);
 	return (EXIT_SUCCESS);
 }

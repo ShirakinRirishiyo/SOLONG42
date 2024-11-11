@@ -95,27 +95,15 @@ typedef struct s_indices
 	int			end;
 }	t_indices;
 
-typedef struct s_mapa_info
-{
-	int			fd;
-	char		*line;
-	int			line_length;
-	int			current_line_length;
-	int			first_line_length;
-	int			is_rectangular;
-	int			i;
-}	t_mapa_info;
-
+int		file_check(char *file);
 void	load_map(t_mapa *data);
 int		load_image(t_mapa *data, void **img, char *ruta);
 void	find_position(t_check *check, t_mapa *data);
 int		is_valid(int x, int y, t_check *check, t_mapa *data);
 void	flood_fill(int x, int y, t_check *check, t_mapa *data);
-void	init_map(t_mapa *data, t_mapa_info *info);
 void	reset_data(t_mapa *data, char *name);
 int		frame_s(t_mapa *data);
 int		key_hook(int keycode, void *param);
-void	ft_printing(long n);
 int		exit_game(t_mapa *data, int win);
 void	ft_check_borders(t_mapa *data);
 void	ft_game_result(t_mapa *data);
@@ -128,7 +116,7 @@ t_check	*do_check(int height, int width);
 void	free_check(t_check *check, int height);
 int		accesibility(t_mapa *data);
 void	comprobacion_open_ber(t_mapa *data);
-void	ft_window_size(t_mapa *data);
+void	ft_window_size(t_mapa *data, void *mlx);
 int		is_valid(int x, int y, t_check *check, t_mapa *data);
 void	flood_fill(int x, int y, t_check *check, t_mapa *data);
 int		way_to_colectables(t_check *check);

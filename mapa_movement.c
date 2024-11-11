@@ -46,7 +46,10 @@ int	key_hook(int keycode, void *param)
 	if (keycode == ESC)
 		exit_game(data, 0);
 	if (keycode == W || keycode == A || keycode == S || keycode == D)
-		ft_printing(++data->steps);
+	{
+		ft_putnbr_fd(++data->steps, 1);
+		ft_putchar_fd('\n', 1);
+	}
 	if (keycode == W)
 		movement(data, 0, -1);
 	else if (keycode == A)

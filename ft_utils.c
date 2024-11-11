@@ -3,18 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dediaz-f <dediaz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dediaz-f <dediaz-f@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:48:48 by dediaz-f          #+#    #+#             */
-/*   Updated: 2024/11/11 19:02:45 by dediaz-f         ###   ########.fr       */
+/*   Updated: 2024/11/11 22:31:42 by dediaz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_printing(long n)
+int	file_check(char *file)
 {
-	ft_printf("Steps: %d\n", n);
+	char		*filename;
+
+	if (ft_strlen(file) <= 4 || ft_strncmp(&file[ft_strlen(file) - 4],
+			".ber", 4))
+		return (ft_putstr_fd("Incorrect Name\n", 2), 1);
+	filename = ft_strrchr(file, '/');
+	if (filename != NULL && ft_strncmp(filename, "/.ber", 5) == 0)
+		return (ft_putstr_fd("Incorrect Name!!!\n", 2), 1);
+	return (0);
 }
 
 int	exit_game(t_mapa *data, int win)
@@ -23,7 +31,7 @@ int	exit_game(t_mapa *data, int win)
 	{
 		ft_printf("--------------------------------------------------\n");
 		ft_printf("|              You gave up :(                    |\n");
-		ft_printf("|   Is the game hard for you? Try again......    |\n");
+		ft_printf("|   Is the game too hard for you? Try again...   |\n");
 		ft_printf("--------------------------------------------------\n");
 	}
 	else if (win == 1)

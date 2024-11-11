@@ -30,13 +30,11 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-size_t	ft_strlen_gnl(const char *s);
-void	*ft_memcpy_gnl(void *dst, const void *src, size_t n);
 char	*ft_strchr_gnl(const char *s, int c);
-char *ft_strchr_gnl(const char *s, int c);
-char *strjoin_and_free(char *s1, const char *s2);
-char *ft_strdup_gnl(const char *s);
-void ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize);
+char	*ft_strchr_gnl(const char *s, int c);
+char	*strjoin_and_free(char *s1, const char *s2);
+char	*ft_strdup_gnl(const char *s);
+void	ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize);
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

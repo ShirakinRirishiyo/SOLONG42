@@ -77,17 +77,20 @@ void	load_map(t_mapa *data)
 	upload_map_content(data);
 }
 
-void	ft_window_size(t_mapa *data)
+void	ft_window_size(t_mapa *data, void *mlx)
 {
-	int width;
-	int heigth;
-	mlx_get_screen_size(data->mlx, &data->width, &data->height);
-	width = width / SPRITE_SIZE;
-	heigth = heigth /  SPRITE_SIZE;
-	if ((width < data->map->width) || heigth < data->map->heigth)
+	int		screen_width;
+	int		screen_height;
+	int		map_width_pixels;
+	int		map_height_pixels;
+
+	map_width_pixels = data->width * SPRITE_SIZE;
+	map_height_pixels = data->height * SPRITE_SIZE;
+	mlx_get_screen_size(mlx, &screen_width, &screen_height);
+	if (map_width_pixels > screen_width || map_height_pixels > screen_height)
 	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("Map do not fit into window\n", 2);
+		ft_putendl_fd("Error: Map is longer than window.", 2);
+		exit_game(data, 2);
 	}
 }
 
