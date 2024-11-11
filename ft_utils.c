@@ -6,7 +6,7 @@
 /*   By: dediaz-f <dediaz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 11:48:48 by dediaz-f          #+#    #+#             */
-/*   Updated: 2024/11/11 16:51:03 by dediaz-f         ###   ########.fr       */
+/*   Updated: 2024/11/11 19:02:45 by dediaz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	exit_game(t_mapa *data, int win)
 	else if (win == 1)
 	{
 		ft_printf("--------------------------------------------------\n");
-		ft_printf("|                You won!! :D                    |\n");
+		ft_printf("|  You won!! :D Now Play Albion!                 |\n");
 		ft_printf("--------------------------------------------------\n");
 	}
 	free_game(data);

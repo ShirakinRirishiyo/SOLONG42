@@ -5,13 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dediaz-f <dediaz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 15:49:10 by dediaz-f          #+#    #+#             */
-/*   Updated: 2024/11/11 15:49:10 by dediaz-f         ###   ########.fr       */
+/*   Created: 2024/11/11 18:30:20 by dediaz-f          #+#    #+#             */
+/*   Updated: 2024/11/11 18:30:20 by dediaz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 
 int	frame_s(t_mapa *data)
 {
@@ -26,7 +25,7 @@ int	frame_s(t_mapa *data)
 
 void	check_general(t_mapa *data)
 {
-	t_check *check;
+	t_check		*check;
 
 	comprobacion_open_ber(data);
 	mapa_objects(data);
@@ -49,12 +48,12 @@ void	reset_data(t_mapa *data, char *name)
 
 int	main(int argc, char *argv[])
 {
-	t_mapa data;
+	t_mapa		data;
 
 	if (argc != 2)
 		return (ft_putstr_fd("Use: ./so_long <map.ber>\n", 2), 1);
-	if (ft_strlen(argv[1]) <= 4 || ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4]
-		, ".ber", 4))
+	if (ft_strlen(argv[1]) <= 4 || ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4],
+		".ber", 4))
 		return (ft_putstr_fd("Incorrect Name\n", 2), 1);
 	data = *((t_mapa *)memset(&data, 0, sizeof(t_mapa)));
 	data.mlx = mlx_init();

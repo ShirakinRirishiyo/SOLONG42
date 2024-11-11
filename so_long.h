@@ -1,17 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+
-	+:+     */
-/*   By: dediaz-f <dediaz-f@student.42madrid.com    +#+  +:+
-	+#+        */
-/*                                                +#+#+#+#+#+
-	+#+           */
-/*   Created: 2024/07/13 11:55:45 by dediaz-f          #+#    #+#             */
-/*   Updated: 2024/11/11 07:53:20 by dediaz-f         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dediaz-f <dediaz-f@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/11 19:04:30 by dediaz-f          #+#    #+#             */
+/*   Updated: 2024/11/11 19:04:30 by dediaz-f         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -22,9 +19,6 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-# define MAX_MAP_WIDTH 100
-# define MAX_MAP_HEIGHT 100
 
 # define ESC 65307
 # define W 119
@@ -50,7 +44,7 @@ typedef struct s_check
 	int			exitparse;
 	int			exit_x;
 	int			exit_y;
-} t_check;
+}	t_check;
 
 typedef struct s_imagenes
 {
@@ -63,7 +57,7 @@ typedef struct s_imagenes
 	void		*torre;
 	void		*fuego1;
 	void		*fuego2;
-} t_imagenes;
+}	t_imagenes;
 
 typedef struct s_mapa
 {
@@ -92,14 +86,14 @@ typedef struct s_mapa
 	void		*mlx;
 	void		*win;
 	t_imagenes	*imagenes;
-} t_mapa;
+}	t_mapa;
 
 typedef struct s_indices
 {
 	int			i;
 	int			j;
 	int			end;
-} t_indices;
+}	t_indices;
 
 typedef struct s_mapa_info
 {
@@ -110,7 +104,7 @@ typedef struct s_mapa_info
 	int			first_line_length;
 	int			is_rectangular;
 	int			i;
-} t_mapa_info;
+}	t_mapa_info;
 
 void	load_map(t_mapa *data);
 int		load_image(t_mapa *data, void **img, char *ruta);

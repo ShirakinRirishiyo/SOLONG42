@@ -15,11 +15,12 @@
 
 #include "so_long.h"
 
-
 t_check	*do_check(int height, int width)
 {
-	int i;
-	t_check *check = malloc(sizeof(t_check));
+	int		i;
+	t_check	*check;
+
+	check = malloc(sizeof(t_check));
 	check->maps = malloc(height * sizeof(int *));
 	i = 0;
 	while (i < height)
@@ -32,29 +33,10 @@ t_check	*do_check(int height, int width)
 	return (check);
 }
 
-void	free_check(t_check *check, int height)
-{
-	int i;
-
-	i = 0;
-	while (i < height)
-	{
-		free(check->maps[i]);
-		i++;
-	}
-	free(check->maps);
-	free(check);
-}
-
-void	ext(t_mapa *data, int i, int j)
-{
-	data->start_i = i;
-	data->start_j = j;
-}
 void	find_position(t_check *check, t_mapa *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < data->height)
@@ -97,10 +79,11 @@ void	flood_fill(int x, int y, t_check *check, t_mapa *data)
 
 int	accesibility(t_mapa *data)
 {
-	int acceso_coleccionables;
-	int acceso_salida;
+	int		acceso_coleccionables;
+	int		acceso_salida;
+	t_check	*check;
 
-	t_check *check = do_check(data->height, data->width);
+	check = do_check(data->height, data->width);
 	find_position(check, data);
 	if (check->exitparse == 0)
 		return (ft_putstr_fd(EXIT_ERR, 2), free_check(check, data->height), 0);
@@ -110,8 +93,7 @@ int	accesibility(t_mapa *data)
 	if (acceso_coleccionables == 1 && acceso_salida == 1)
 	{
 		ft_putstr_fd("Player has access to all collectables and exit.\n", 2);
-		free_check(check, data->height);
-		return (1);
+		return (free_check(check, data->height), 1);
 	}
 	else
 	{
@@ -119,7 +101,6 @@ int	accesibility(t_mapa *data)
 			ft_putstr_fd("Error: No access to all collectables.\n", 2);
 		if (acceso_salida == 0)
 			ft_putstr_fd("Error: No access to exit.\n", 2);
-		free_check(check, data->height);
-		return (0);
+		return (free_check(check, data->height), 0);
 	}
 }

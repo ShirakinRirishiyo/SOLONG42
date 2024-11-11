@@ -6,17 +6,16 @@
 /*   By: dediaz-f <dediaz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:42:24 by dediaz-f          #+#    #+#             */
-/*   Updated: 2024/11/11 15:42:24 by dediaz-f         ###   ########.fr       */
+/*   Updated: 2024/11/11 18:05:25 by dediaz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
 int	load_image(t_mapa *data, void **img, char *ruta)
 {
-	int img_width;
-	int img_height;
+	int	img_width;
+	int	img_height;
 
 	if (data == NULL || data->mlx == NULL)
 	{

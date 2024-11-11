@@ -6,7 +6,7 @@
 /*   By: dediaz-f <dediaz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 16:36:48 by dediaz-f          #+#    #+#             */
-/*   Updated: 2024/11/11 16:36:48 by dediaz-f         ###   ########.fr       */
+/*   Updated: 2024/11/11 18:17:16 by dediaz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,12 @@ void	mapa_dimention(t_mapa *data)
 	}
 }
 
-void	mapa_memory(t_mapa *data)
-{
-	data->map = (char **)malloc(sizeof(char *) * (data->height + 1));
-	if (data->map == NULL)
-	{
-		ft_putendl_fd("Error al asignar memoria para el mapa", 2);
-		exit_game(data, 2);
-	}
-}
-
 void	upload_map_content(t_mapa *data)
 {
-	char *line;
-	int fd;
+	char	*line;
+	int		fd;
+	int		i;
+	int		len;
 
 	fd = open(data->text, O_RDONLY);
 	if (fd == -1)
@@ -62,14 +54,13 @@ void	upload_map_content(t_mapa *data)
 		ft_putendl_fd("Error al abrir el archivo", 2);
 		exit_game(data, 2);
 	}
-	int i = 0;
+	i = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		int len = ft_strlen(line);
+		len = ft_strlen(line);
 		if (line[len - 1] == '\n')
 			line[len - 1] = '\0';
-
 		data->map[i++] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
@@ -88,16 +79,23 @@ void	load_map(t_mapa *data)
 
 void	ft_window_size(t_mapa *data)
 {
-	mlx_get_screen_size(data->mlx, &data->size_x, &data->size_y);
-	//data->size_x = data->width * SPRITE_SIZE;
-	//data->size_y = data->height * SPRITE_SIZE;
-	ft_printf("Tamaño de la ventana - Ancho (size_x): %d, Alto (size_y): %d\n",
-		data->size_x, data->size_y);
+	int width;
+	int heigth;
+	mlx_get_screen_size(data->mlx, &data->width, &data->height);
+	width = width / SPRITE_SIZE;
+	heigth = heigth /  SPRITE_SIZE;
+	if ((width < data->map->width) || heigth < data->map->heigth)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Map do not fit into window\n", 2);
+	}
 }
 
 void	free_map(t_mapa *data)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (data->map && data->map[i])
 	{
 		free(data->map[i]);

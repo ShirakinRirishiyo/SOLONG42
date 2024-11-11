@@ -6,7 +6,7 @@
 /*   By: dediaz-f <dediaz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 15:42:47 by dediaz-f          #+#    #+#             */
-/*   Updated: 2024/11/11 15:42:47 by dediaz-f         ###   ########.fr       */
+/*   Updated: 2024/11/11 18:11:19 by dediaz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	draw_element(t_mapa *data, void *img, int x, int y)
 {
 	mlx_put_image_to_window(data->mlx, data->win, img, x * SPRITE_SIZE, y
-			* SPRITE_SIZE);
+		* SPRITE_SIZE);
 }
 
 static void	draw_element_of_map(t_mapa *data, int i, int j)
@@ -43,8 +43,8 @@ static void	draw_element_of_map(t_mapa *data, int i, int j)
 
 void	draw_map(t_mapa *data)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	if (data == NULL || data->map == NULL || data->imagenes == NULL)
 	{

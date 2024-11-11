@@ -15,7 +15,6 @@
 
 #include "so_long.h"
 
-
 void	movement(t_mapa *data, int move_x, int move_y)
 {
 	if (data->map[data->y + move_y][data->x + move_x] == '1')
@@ -41,7 +40,7 @@ void	movement(t_mapa *data, int move_x, int move_y)
 
 int	key_hook(int keycode, void *param)
 {
-	t_mapa *data;
+	t_mapa	*data;
 
 	data = (t_mapa *)param;
 	if (keycode == ESC)
